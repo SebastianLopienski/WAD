@@ -93,7 +93,7 @@ def test_cluesCorrect():
 			
 	# check if only expected fields are defined for apps
 	assert (set(types.keys()) == 
-		set(['implies', 'script', 'url', 'cats', 'headers', 'html', 'meta', 'env', 'confidence']))
+		set(['implies', 'script', 'scripts', 'url', 'cats', 'headers', 'html', 'meta', 'env', 'confidence']))
 
 	types = {}	
 	for t in [k for a in apps for k in apps[a]]:
@@ -104,6 +104,7 @@ def test_cluesCorrect():
 	# check if numbers of entries are as expected
 	assert types['implies'] > 120
 	assert types['script'] > 95
+	assert types['scripts'] > 0
 	assert types['url'] > 20
 	assert types['headers'] > 80
 	assert types['html'] > 140
@@ -143,7 +144,6 @@ def test_cluesCorrect():
 	assert set(reduce(list.__add__, [apps[a]['implies'] 
 			for a in apps if apps[a].has_key('implies')])) - set(apps.keys()) == set()   
 
-	# TODO: (later) check if all search clues are in correct format (e.g. version=$NUMBER etc.)
 
 # ===========================================================================================================		
 
